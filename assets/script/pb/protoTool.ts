@@ -1,13 +1,13 @@
-//@ts-nocheck
 /*
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-12-24 15:02:42
- * @LastEditTime: 2022-02-10 13:28:04
+ * @LastEditTime: 2022-02-10 17:16:19
  */
 // var gameProto = require("gameProto")
+import { CMD2PB } from "./cmdDef"
 import gameProto from "./gameProto.js"
-let ProtoTool = {
+let protoTool = {
     //根据协议编码pb数据
     encode: function (cmd, data) {
         var bytesData = null
@@ -90,4 +90,5 @@ let ProtoTool = {
 
 }
 
-globalThis.ProtoTool = ProtoTool
+// globalThis.ProtoTool = ProtoTool
+export default protoTool
