@@ -4,13 +4,16 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2022-02-10 13:39:19
+ * @LastEditTime: 2022-02-10 17:03:20
  */
 
-import { _decorator, Component, Node, UITransformComponent } from 'cc';
+import { _decorator, Component } from 'cc';
+const { ccclass, property } = _decorator;
+import ConstEventDefine from './config/ConstEventDefine';
+import EventManager from './core/EventManager';
 import UITool from './core/UITool';
 import Proto from "./pb/gameProto.js";
-const { ccclass, property } = _decorator;
+
 
 
 @ccclass('loadscene')
@@ -23,6 +26,24 @@ export class loadscene extends Component {
         console.log(this.mChild.Button)
         UITool.addBtnClick(this.mChild.Button, () => {
             console.log('click')
+            UITool.showWaitNetWork()
+            setTimeout(() => {
+                UITool.dismissWaitNetWork()
+            }, 3000)
+        })
+
+        UITool.addBtnClick(this.mChild.event, () => {
+            EventManager.dispatchEvent(ConstEventDefine.TEST, { "name": "Lee123" })
+        })
+
+        UITool.addBtnClick(this.mChild.alert, () => {
+            UITool.showAlert("66666", ["yes", "no"], (index) => {
+                console.log("index:", index)
+            })
+        })
+
+        EventManager.on(ConstEventDefine.TEST, (data) => {
+            console.log("EventTest===2", data)
         })
 
         //pb Test
