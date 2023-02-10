@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2023-02-10 14:53:20
+ * @LastEditTime: 2023-02-10 15:06:33
  */
 
 import { _decorator, Component, Label } from 'cc';
@@ -48,14 +48,14 @@ export class loadscene extends Component {
             console.log("EventTest===2", data)
         })
 
-        this.mChild.Label.getComponent(Label).string = "hello world666000"
+        this.mChild.Label.getComponent(Label).string = "23"
         //pb Test
         var peron2 = Proto.tutorial.Person.create()
         peron2.name = "hello world"
         peron2.email = "497232807@qq.com"
         peron2.id = 110
         var byteData = Proto.tutorial.Person.encode(peron2).finish()
-        console.log("编码测试===========", byteData)
+        console.log("编码测试===========", protoTool.Uint8ArrayToString(byteData))
 
         var decodeData = Proto.tutorial.Person.decode(byteData)
         console.log("解码测试===========", JSON.stringify(decodeData))
