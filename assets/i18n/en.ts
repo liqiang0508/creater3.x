@@ -1,5 +1,5 @@
 const win = window as any
- export const languages = {
+export const languages = {
 	"2001":"Hello",
 	"2002":"Chinese",
 	"2003":"sixsixsix",

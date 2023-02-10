@@ -4,10 +4,10 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2022-02-10 17:12:59
+ * @LastEditTime: 2023-02-10 14:53:20
  */
 
-import { _decorator, Component } from 'cc';
+import { _decorator, Component, Label } from 'cc';
 const { ccclass, property } = _decorator;
 import ConstEventDefine from './config/ConstEventDefine';
 import EventManager from './core/EventManager';
@@ -48,6 +48,7 @@ export class loadscene extends Component {
             console.log("EventTest===2", data)
         })
 
+        this.mChild.Label.getComponent(Label).string = "hello world666000"
         //pb Test
         var peron2 = Proto.tutorial.Person.create()
         peron2.name = "hello world"
