@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2023-02-10 15:06:33
+ * @LastEditTime: 2023-02-10 15:23:57
  */
 
 import { _decorator, Component, Label } from 'cc';
@@ -44,9 +44,7 @@ export class loadscene extends Component {
             })
         })
 
-        EventManager.on(ConstEventDefine.TEST, (data) => {
-            console.log("EventTest===2", data)
-        })
+        EventManager.on(ConstEventDefine.TEST, this.eventTest, this)
 
         this.mChild.Label.getComponent(Label).string = "23"
         //pb Test
@@ -70,5 +68,12 @@ export class loadscene extends Component {
     // update (deltaTime: number) {
     //     // [4]
     // }
+    eventTest(data) {
+        console.log("EventTest", data)
+    }
+    onDestroy() {
+        EventManager.off(ConstEventDefine.TEST, this.eventTest, this)
+    }
+
 }
 
