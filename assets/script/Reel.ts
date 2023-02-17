@@ -71,27 +71,24 @@ export class Reel extends Component {
         this.reelAnchor.children.forEach(element => {
             const dirModifier = -1;
 
-            // let windUp = 0.1
-            // const delay = tween(element).delay(windUp);
-            // const start = tween(element).by(0.3, { position: new Vec3(0, 148 * dirModifier, 0) }, { easing: 'backIn' }); //{ easing: 'backIn' }
-            // const doChange = tween().call(() => this.changeCallback(element));
-            // const callSpinning = tween(element).call(() => this.doSpinning(element, 5));
+            let windUp = 0.1
+            const delay = tween(element).delay(windUp);
+            const start = tween(element).by(0.3, { position: new Vec3(0, 148 * dirModifier, 0) }, { easing: 'backIn' }); //{ easing: 'backIn' }
+            const doChange = tween().call(() => this.changeCallback(element));
+            const callSpinning = tween(element).call(() => this.doSpinning(element, this._numberOfTile));
 
-            // delay
-            //     .then(start)
-            //     .then(doChange)
-            //     .then(callSpinning)
-            //     .start();
-            // const start = tween(element).by(0.3, { position: new Vec3(0, 148 * dirModifier, 0) }, { easing: 'backIn' }); //{ easing: 'backIn' }
-            // const doChange = tween().call(() => this.changeCallback(element));
-            // start.then(doChange).start()
+            delay
+                .then(start)
+                .then(doChange)
+                .then(callSpinning)
+                .start();
 
-            const move = tween(element).by(0.04, { position: new Vec3(0, 148 * dirModifier, 0) });
-            const doChange = tween(element).call(() => this.changeCallback(element));
-            const repeat = tween(element).repeat(1, move.then(doChange));
-            const checkEnd = tween(element).call(() => this.checkEndCallback(element));
 
-            repeat.then(checkEnd).start();
+            // const move = tween(element).by(0.04, { position: new Vec3(0, 148 * dirModifier, 0) });
+            // const doChange = tween(element).call(() => this.changeCallback(element));
+            // const repeat = tween(element).repeat(1, move.then(doChange));
+            // const checkEnd = tween(element).call(() => this.checkEndCallback(element));
+            // repeat.then(checkEnd).start();
         });
     }
 
