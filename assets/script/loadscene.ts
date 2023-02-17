@@ -4,10 +4,10 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2023-02-10 15:23:57
+ * @LastEditTime: 2023-02-15 09:12:44
  */
 
-import { _decorator, Component, Label } from 'cc';
+import { _decorator, Component, Label, UITransform } from 'cc';
 const { ccclass, property } = _decorator;
 import ConstEventDefine from './config/ConstEventDefine';
 import EventManager from './core/EventManager';
@@ -22,9 +22,12 @@ import protoTool from './pb/protoTool';
 export class loadscene extends Component {
     mChild: any = {};
 
-    start() {
+    onLoad() {
         this.mChild = {}
         UITool.getChildNode(this.mChild, this.node)
+    }
+    start() {
+
         console.log(this.mChild.Button)
         UITool.addBtnClick(this.mChild.Button, () => {
             console.log('click')
@@ -47,6 +50,10 @@ export class loadscene extends Component {
         EventManager.on(ConstEventDefine.TEST, this.eventTest, this)
 
         this.mChild.Label.getComponent(Label).string = "23"
+        var img = this.mChild.img
+        console.log("img", img)
+        const contentSize = img.getComponent(UITransform).contentSize
+        console.log(contentSize)
         //pb Test
         var peron2 = Proto.tutorial.Person.create()
         peron2.name = "hello world"
