@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2023-02-15 16:10:03
- * @LastEditTime: 2023-02-15 19:24:12
+ * @LastEditTime: 2023-02-18 17:59:07
  */
 
 import { _decorator, Component, Node, SpriteFrame, Sprite } from 'cc';
@@ -18,7 +18,7 @@ export class Tile extends Component {
 
     start() {
         // [3]
-        // this.setRandom()
+        this.setRandom()
     }
 
     setTile(index: number): void {

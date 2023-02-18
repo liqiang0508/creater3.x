@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node, Prefab, instantiate, Vec2, Vec3, tween, Layout, CCInteger } from 'cc';
+import { json } from 'node:stream/consumers';
 const { ccclass, property } = _decorator;
 
 
@@ -20,10 +21,7 @@ export class Reel extends Component {
 
     set numberOfTile(newNumber) {
         this._numberOfTile = newNumber;
-        if (this.tilePrefab) {
-            this.createTile();
-            this.shuffle();
-        }
+
     }
     @property({ type: Node, tooltip: "reel锚点" }
     )
@@ -34,10 +32,10 @@ export class Reel extends Component {
 
     private result: Array<number> = [];
 
-    @property({ type: Node, tooltip: "btn" }
+    @property({ type: Node, tooltip: "spin btn" }
     )
     public spinBtn = null
-
+    public stopSpinning = false;
     createTile(): void {
         let newTile: Node;
         this.reelAnchor.destroyAllChildren();
@@ -60,13 +58,13 @@ export class Reel extends Component {
     }
 
     onLoad() {
-        // this.createTile()
-        // this.shuffle();
-        // this.reelAnchor.getComponent(Layout).enabled = false;
+        this.createTile();
+        this.shuffle();
     }
     // 开始转动
     startSpin() {
 
+        this.stopSpinning = false;
         console.log("startSpin")
         this.reelAnchor.children.forEach(element => {
             const dirModifier = -1;
@@ -82,13 +80,6 @@ export class Reel extends Component {
                 .then(doChange)
                 .then(callSpinning)
                 .start();
-
-
-            // const move = tween(element).by(0.04, { position: new Vec3(0, 148 * dirModifier, 0) });
-            // const doChange = tween(element).call(() => this.changeCallback(element));
-            // const repeat = tween(element).repeat(1, move.then(doChange));
-            // const checkEnd = tween(element).call(() => this.checkEndCallback(element));
-            // repeat.then(checkEnd).start();
         });
     }
 
@@ -123,12 +114,33 @@ export class Reel extends Component {
     }
     checkEndCallback(element: Node = null): void {
         const el = element;
-        // if (this.stopSpinning) {
-        //     this.getComponent(cc.AudioSource).play();
-        //     this.doStop(el);
-        // } else {
-        this.doSpinning(el);
-        // }
+        if (this.stopSpinning) {
+            // this.getComponent(cc.AudioSource).play();
+            this.doStop(el);
+        } else {
+            this.doSpinning(el);
+        }
+    }
+    doStop(element: Node = null): void {
+        const dirModifier = -1//this.spinDirection === Aux.Direction.Down ? -1 : 1;
+
+        const move = tween(element).by(0.04, { position: new Vec3(0, 144 * dirModifier, 0) });
+        const doChange = tween().call(() => this.changeCallback(element));
+        const end = tween().by(0.2, { position: new Vec3(0, 144 * dirModifier, 0) }, { easing: 'bounceOut' });
+
+        move
+            .then(doChange)
+            .then(move)
+            .then(doChange)
+            .then(end)
+            .then(doChange)
+            .start();
+
+    }
+    readyStop(newResult: Array<number>): void {
+        const check = true// this.spinDirection === Aux.Direction.Down || newResult == null;
+        this.result = check ? newResult : newResult.reverse();
+        this.stopSpinning = true;
     }
 }
 
