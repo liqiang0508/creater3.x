@@ -92,8 +92,6 @@ export default class Alert extends popBaseView {
 
     }
 
-
-
     start() {
         this.mChild = {}
         UITool.getChildNode(this.mChild, this.node)
