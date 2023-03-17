@@ -4,19 +4,18 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2023-03-04 19:06:51
+ * @LastEditTime: 2023-03-17 13:26:25
  */
 
 import { _decorator, Component, Label, CCInteger, Node, UITransform } from 'cc';
+import { tutorial } from 'pb_framework';
 const { ccclass, property } = _decorator;
 import ConstEventDefine from './config/ConstEventDefine';
 import EventManager from './core/EventManager';
 import UITool from './core/UITool';
 import { convert2NodePos } from './core/utils';
 import { CMD } from './pb/cmdDef';
-
-import Proto from "./pb/gameProto.js";
-import protoTool from './pb/protoTool';
+import {ProtoTool} from './pb/protoTool';
 
 
 @ccclass('loadscene')
@@ -67,21 +66,22 @@ export class loadscene extends Component {
         this.mChild.Label.getComponent(Label).string = "23"
 
         //pb Test
-        var peron2 = Proto.tutorial.Person.create()
+        var peron2 = tutorial.Person.create()
         peron2.name = "hello world"
         peron2.email = "497232807@qq.com"
         peron2.id = 110
-        var byteData = Proto.tutorial.Person.encode(peron2).finish()
-        console.log("编码测试===========", protoTool.Uint8ArrayToString(byteData))
+        var byteData = tutorial.Person.encode(peron2).finish()
+        console.log("编码测试===========", byteData)
 
-        var decodeData = Proto.tutorial.Person.decode(byteData)
+        var decodeData = tutorial.Person.decode(byteData)
         console.log("解码测试===========", JSON.stringify(decodeData))
 
-        var res = protoTool.encode(CMD.Login, { name: "hello world", email: "497232807@qq.com", id: 201162 })
-        console.log("ProtoTool 编码==", res)
+        // var res = protoTool.encode(CMD.Login, { name: "hello world", email: "497232807@qq.com", id: 201162 })
+        // console.log("ProtoTool 编码==", res)
 
-        var res1 = protoTool.decode(CMD.Login, res)
-        console.log("ProtoTool 解码==", JSON.stringify(res1))
+        // var res1 = protoTool.decode(CMD.Login, res)
+        // console.log("ProtoTool 解码==", JSON.stringify(res1))
+
     }
 
     // update (deltaTime: number) {

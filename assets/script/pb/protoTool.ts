@@ -2,93 +2,83 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-12-24 15:02:42
- * @LastEditTime: 2022-02-10 17:16:19
+ * @LastEditTime: 2023-03-17 13:25:55
  */
 // var gameProto = require("gameProto")
-import { CMD2PB } from "./cmdDef"
-import gameProto from "./gameProto.js"
-let protoTool = {
-    //根据协议编码pb数据
-    encode: function (cmd, data) {
-        var bytesData = null
-        if (CMD2PB[cmd]) {
-            var pak = CMD2PB[cmd].pak
-            let arry = pak.split(".")
-            let message = null
-            for (var i = 0; i < arry.length; i++) {
-                var key = arry[i]
-                if (message) {
-                    message = message[key]
-                } else {
-                    message = gameProto[key]
-                }
+export const ProtoTool = {
+    //找到pb对象里面的消息体结构
+    findObj(obj:Object,key:string){
+        if(obj == null || key == null || key.length == 0)
+        return null
+        
+        let arry = key.split(".")
+        let message = null
+        for (var i = 0; i < arry.length; i++) {
+            var key = arry[i]
+            if (message) {
+                message = message[key]
+            } else {
+                message = obj[key]
             }
-
-            bytesData = message.create(data)
-            bytesData = message.encode(bytesData).finish()
-            // bytesData = bytesData.slice().buffer
-            // bytesData = bytesData.buffer.slice(bytesData.byteOffset, bytesData.byteLength + bytesData.byteOffset)
         }
-        return bytesData
+        return message
     },
-    //根据协议解码pb数据
-    decode: function (cmd, bytes) {
-        var res = null
-
-        if (CMD2PB[cmd]) {
-            var pak = CMD2PB[cmd].pak
-            let arry = pak.split(".")
-            let message = null
-            for (var i = 0; i < arry.length; i++) {
-                var key = arry[i]
-                if (message) {
-                    message = message[key]
-                } else {
-                    message = gameProto[key]
-                }
-            }
-            res = message.decode(new Uint8Array(bytes))
+    /**
+     * @description: 
+     * @param {string} pak  编解码协议
+     * @param {any} data    编码数据
+     * @param {any} protojs 编码pbjs对象 
+     * @return {Uint8Array}
+     */
+    encode: function (data:any,protojs:any):Uint8Array {
+        if(data == null || protojs ==null)
+        {
+            return null
         }
-        return res
+        else
+        {
+            var bytesData:Uint8Array
+            bytesData = protojs.create(data)
+            bytesData = protojs.encode(bytesData).finish()
+            return bytesData
+        }
+    },
+    
+    /**
+     * @description: 
+     * @param {string} pak 编解码协议
+     * @param {any} bytes  解码数据
+     * @param {any} protojs 解码pbjs对象 
+     * @return {any}
+     */
+    decode: function (bytes:any,protojs:any):any {
+        if(bytes == null || protojs ==null)
+        {
+            return null
+        }
+        else
+        {
+            var  res = protojs.decode(new Uint8Array(bytes))
+            return res
+        }
     },
 
-    Uint8ArrayToString: function (fileData) {
+    Uint8ArrayToString: function (fileData:Uint8Array):string {
         var dataString = "";
         for (var i = 0; i < fileData.length; i++) {
             dataString += String.fromCharCode(fileData[i]);
         }
-
         return dataString
-
     },
 
-    stringToUint8Array: function (str) {
+    stringToUint8Array: function (str:string):Uint8Array {
         var arr = [];
         for (var i = 0, j = str.length; i < j; ++i) {
             arr.push(str.charCodeAt(i));
         }
-
         var tmpUint8Array = new Uint8Array(arr);
         return tmpUint8Array
     },
 
-    packData: function (cmd, byteData) {
-        // var message = {cmd:cmd,data:ProtoTool.Uint8ArrayToString(byteData)}
-        // console.log("message==",message)
-        // message = ProtoTool.stringToUint8Array(JSON.stringify(message))
-        // console.log("message==1",message)
-        var data = { id: cmd, data: byteData }
-        var message = gameProto.tutorial.Package.create(data)
-        var bytesData = gameProto.tutorial.Package.encode(message).finish()
-        return bytesData
-    },
-
-    parseData: function (byteData) {
-        var message = gameProto.tutorial.Package.decode(byteData)
-        return message
-    },
-
 }
 
-// globalThis.ProtoTool = ProtoTool
-export default protoTool

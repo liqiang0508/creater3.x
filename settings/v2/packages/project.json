@@ -12,5 +12,8 @@
     "legacyFbxImporter": {
       "visible": true
     }
+  },
+  "script": {
+    "importMap": "project://import-map.json"
   }
 }

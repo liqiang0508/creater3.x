@@ -5,5 +5,10 @@
   "compilerOptions": {
     "strict": false,
     "noImplicitAny": false,
+    "baseUrl": "./",
+    "paths": {
+      "pb_framework": ["./assets/script/pb/pb_framework"]
+    },
+    "allowSyntheticDefaultImports": true, // 需要开启
   }
 }

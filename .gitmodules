@@ -1,3 +1,6 @@
 [submodule "excelExport"]
 	path = excelExport
 	url = https://github.com/liqiang0508/excelExport.git
+[submodule "ProtoTool"]
+	path = ProtoTool
+	url = https://github.com/liqiang0508/ProtoTool.git
