@@ -100,11 +100,11 @@ export const tutorial = $root.tutorial = (() => {
         Person.encode = function encode(m, w) {
             if (!w)
                 w = $Writer.create();
-            if (m.name != null && Object.hasOwnProperty.call(m, "name"))
+            if (m.name != null && m.hasOwnProperty("name"))
                 w.uint32(10).string(m.name);
-            if (m.id != null && Object.hasOwnProperty.call(m, "id"))
+            if (m.id != null && m.hasOwnProperty("id"))
                 w.uint32(16).int32(m.id);
-            if (m.email != null && Object.hasOwnProperty.call(m, "email"))
+            if (m.email != null && m.hasOwnProperty("email"))
                 w.uint32(26).string(m.email);
             if (m.phones != null && m.phones.length) {
                 for (var i = 0; i < m.phones.length; ++i)
@@ -131,24 +131,20 @@ export const tutorial = $root.tutorial = (() => {
             while (r.pos < c) {
                 var t = r.uint32();
                 switch (t >>> 3) {
-                case 1: {
-                        m.name = r.string();
-                        break;
-                    }
-                case 2: {
-                        m.id = r.int32();
-                        break;
-                    }
-                case 3: {
-                        m.email = r.string();
-                        break;
-                    }
-                case 4: {
-                        if (!(m.phones && m.phones.length))
-                            m.phones = [];
-                        m.phones.push($root.tutorial.Person.PhoneNumber.decode(r, r.uint32()));
-                        break;
-                    }
+                case 1:
+                    m.name = r.string();
+                    break;
+                case 2:
+                    m.id = r.int32();
+                    break;
+                case 3:
+                    m.email = r.string();
+                    break;
+                case 4:
+                    if (!(m.phones && m.phones.length))
+                        m.phones = [];
+                    m.phones.push($root.tutorial.Person.PhoneNumber.decode(r, r.uint32()));
+                    break;
                 default:
                     r.skipType(t & 7);
                     break;
@@ -158,24 +154,9 @@ export const tutorial = $root.tutorial = (() => {
         };
 
         /**
-         * Gets the default type url for Person
-         * @function getTypeUrl
-         * @memberof tutorial.Person
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Person.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/tutorial.Person";
-        };
-
-        /**
          * PhoneType enum.
          * @name tutorial.Person.PhoneType
-         * @enum {number}
+         * @enum {string}
          * @property {number} MOBILE=0 MOBILE value
          * @property {number} HOME=1 HOME value
          * @property {number} WORK=2 WORK value
@@ -253,9 +234,9 @@ export const tutorial = $root.tutorial = (() => {
             PhoneNumber.encode = function encode(m, w) {
                 if (!w)
                     w = $Writer.create();
-                if (m.number != null && Object.hasOwnProperty.call(m, "number"))
+                if (m.number != null && m.hasOwnProperty("number"))
                     w.uint32(10).string(m.number);
-                if (m.type != null && Object.hasOwnProperty.call(m, "type"))
+                if (m.type != null && m.hasOwnProperty("type"))
                     w.uint32(16).int32(m.type);
                 return w;
             };
@@ -278,35 +259,18 @@ export const tutorial = $root.tutorial = (() => {
                 while (r.pos < c) {
                     var t = r.uint32();
                     switch (t >>> 3) {
-                    case 1: {
-                            m.number = r.string();
-                            break;
-                        }
-                    case 2: {
-                            m.type = r.int32();
-                            break;
-                        }
+                    case 1:
+                        m.number = r.string();
+                        break;
+                    case 2:
+                        m.type = r.int32();
+                        break;
                     default:
                         r.skipType(t & 7);
                         break;
                     }
                 }
                 return m;
-            };
-
-            /**
-             * Gets the default type url for PhoneNumber
-             * @function getTypeUrl
-             * @memberof tutorial.Person.PhoneNumber
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            PhoneNumber.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
-                }
-                return typeUrlPrefix + "/tutorial.Person.PhoneNumber";
             };
 
             return PhoneNumber;
@@ -397,33 +361,17 @@ export const tutorial = $root.tutorial = (() => {
             while (r.pos < c) {
                 var t = r.uint32();
                 switch (t >>> 3) {
-                case 1: {
-                        if (!(m.people && m.people.length))
-                            m.people = [];
-                        m.people.push($root.tutorial.Person.decode(r, r.uint32()));
-                        break;
-                    }
+                case 1:
+                    if (!(m.people && m.people.length))
+                        m.people = [];
+                    m.people.push($root.tutorial.Person.decode(r, r.uint32()));
+                    break;
                 default:
                     r.skipType(t & 7);
                     break;
                 }
             }
             return m;
-        };
-
-        /**
-         * Gets the default type url for AddressBook
-         * @function getTypeUrl
-         * @memberof tutorial.AddressBook
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        AddressBook.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/tutorial.AddressBook";
         };
 
         return AddressBook;
@@ -494,9 +442,9 @@ export const tutorial = $root.tutorial = (() => {
         Package.encode = function encode(m, w) {
             if (!w)
                 w = $Writer.create();
-            if (m.cmd != null && Object.hasOwnProperty.call(m, "cmd"))
+            if (m.cmd != null && m.hasOwnProperty("cmd"))
                 w.uint32(8).uint32(m.cmd);
-            if (m.data != null && Object.hasOwnProperty.call(m, "data"))
+            if (m.data != null && m.hasOwnProperty("data"))
                 w.uint32(18).bytes(m.data);
             return w;
         };
@@ -519,35 +467,18 @@ export const tutorial = $root.tutorial = (() => {
             while (r.pos < c) {
                 var t = r.uint32();
                 switch (t >>> 3) {
-                case 1: {
-                        m.cmd = r.uint32();
-                        break;
-                    }
-                case 2: {
-                        m.data = r.bytes();
-                        break;
-                    }
+                case 1:
+                    m.cmd = r.uint32();
+                    break;
+                case 2:
+                    m.data = r.bytes();
+                    break;
                 default:
                     r.skipType(t & 7);
                     break;
                 }
             }
             return m;
-        };
-
-        /**
-         * Gets the default type url for Package
-         * @function getTypeUrl
-         * @memberof tutorial.Package
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Package.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/tutorial.Package";
         };
 
         return Package;
@@ -649,11 +580,11 @@ export const test = $root.test = (() => {
         Hero.encode = function encode(m, w) {
             if (!w)
                 w = $Writer.create();
-            if (m.name != null && Object.hasOwnProperty.call(m, "name"))
+            if (m.name != null && m.hasOwnProperty("name"))
                 w.uint32(10).string(m.name);
-            if (m.id != null && Object.hasOwnProperty.call(m, "id"))
+            if (m.id != null && m.hasOwnProperty("id"))
                 w.uint32(16).int32(m.id);
-            if (m.age != null && Object.hasOwnProperty.call(m, "age"))
+            if (m.age != null && m.hasOwnProperty("age"))
                 w.uint32(24).int32(m.age);
             if (m.skills != null && m.skills.length) {
                 for (var i = 0; i < m.skills.length; ++i)
@@ -680,45 +611,26 @@ export const test = $root.test = (() => {
             while (r.pos < c) {
                 var t = r.uint32();
                 switch (t >>> 3) {
-                case 1: {
-                        m.name = r.string();
-                        break;
-                    }
-                case 2: {
-                        m.id = r.int32();
-                        break;
-                    }
-                case 3: {
-                        m.age = r.int32();
-                        break;
-                    }
-                case 4: {
-                        if (!(m.skills && m.skills.length))
-                            m.skills = [];
-                        m.skills.push(r.string());
-                        break;
-                    }
+                case 1:
+                    m.name = r.string();
+                    break;
+                case 2:
+                    m.id = r.int32();
+                    break;
+                case 3:
+                    m.age = r.int32();
+                    break;
+                case 4:
+                    if (!(m.skills && m.skills.length))
+                        m.skills = [];
+                    m.skills.push(r.string());
+                    break;
                 default:
                     r.skipType(t & 7);
                     break;
                 }
             }
             return m;
-        };
-
-        /**
-         * Gets the default type url for Hero
-         * @function getTypeUrl
-         * @memberof test.Hero
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Hero.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/test.Hero";
         };
 
         return Hero;

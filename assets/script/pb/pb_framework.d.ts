@@ -1,5 +1,4 @@
 import * as $protobuf from "protobufjs";
-import Long = require("long");
 export = pb_framework;
 
 declare namespace pb_framework {
@@ -23,7 +22,6 @@ declare namespace pb_framework {
             public static create(properties?: tutorial.IPerson): tutorial.Person;
             public static encode(m: tutorial.Person, w?: $protobuf.Writer): $protobuf.Writer;
             public static decode(r: ($protobuf.Reader|Uint8Array), l?: number): tutorial.Person;
-            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         namespace Person {
@@ -46,7 +44,6 @@ declare namespace pb_framework {
                 public static create(properties?: tutorial.Person.IPhoneNumber): tutorial.Person.PhoneNumber;
                 public static encode(m: tutorial.Person.PhoneNumber, w?: $protobuf.Writer): $protobuf.Writer;
                 public static decode(r: ($protobuf.Reader|Uint8Array), l?: number): tutorial.Person.PhoneNumber;
-                public static getTypeUrl(typeUrlPrefix?: string): string;
             }
         }
 
@@ -60,7 +57,6 @@ declare namespace pb_framework {
             public static create(properties?: tutorial.IAddressBook): tutorial.AddressBook;
             public static encode(m: tutorial.AddressBook, w?: $protobuf.Writer): $protobuf.Writer;
             public static decode(r: ($protobuf.Reader|Uint8Array), l?: number): tutorial.AddressBook;
-            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         interface IPackage {
@@ -75,7 +71,6 @@ declare namespace pb_framework {
             public static create(properties?: tutorial.IPackage): tutorial.Package;
             public static encode(m: tutorial.Package, w?: $protobuf.Writer): $protobuf.Writer;
             public static decode(r: ($protobuf.Reader|Uint8Array), l?: number): tutorial.Package;
-            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 
@@ -97,7 +92,6 @@ declare namespace pb_framework {
             public static create(properties?: test.IHero): test.Hero;
             public static encode(m: test.Hero, w?: $protobuf.Writer): $protobuf.Writer;
             public static decode(r: ($protobuf.Reader|Uint8Array), l?: number): test.Hero;
-            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 }
