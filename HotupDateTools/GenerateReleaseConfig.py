@@ -160,7 +160,7 @@ print(os.getcwd())
 os.chdir("HotupDateTools")
 BuildRes()  #上面生成最新的配置 所以还要编译一次
 os.chdir("../")
-
+print(os.getcwd())
 configrelease = "hotupversion/configrelease"
 data = None
 with open(configrelease, "r") as f:
@@ -173,7 +173,7 @@ data = data.replace('\"scriptVersion\": ' + str(oldscriptVersion),
 with open(configrelease, "w") as f:
     f.write(data)
     f.close()
-copyFile(configrelease, "hotupversion/" + configrelease)
+
 
 print(" End=========================="+str(scriptVersion))
 os.system('pause')
