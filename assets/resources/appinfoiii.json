@@ -1,0 +1,180 @@
+{
+    "scriptVersion": 19,
+    "files": [
+        {
+            "filename": "src/application.js",
+            "md5": "E86FDAC237D3FE20A6AA86CC74CE45D9",
+            "size": 1254
+        },
+        {
+            "filename": "src/import-map.json",
+            "md5": "FC840D99CBB3732367A93C054D1200D4",
+            "size": 37
+        },
+        {
+            "filename": "src/settings.json",
+            "md5": "115AC1EC2EB569AAD612A8491FAE07BF",
+            "size": 27366
+        },
+        {
+            "filename": "src/system.bundle.js",
+            "md5": "794A0DEB87693911C60AA2AB291C4AE3",
+            "size": 7829
+        },
+        {
+            "filename": "src/chunks/bundle.js",
+            "md5": "913280B138C6CBB55D99B31BE40AD65B",
+            "size": 30722
+        },
+        {
+            "filename": "src/cocos-js/cc.js",
+            "md5": "982CDC83C8D516D8276564D83090C36B",
+            "size": 2374219
+        },
+        {
+            "filename": "assets/internal/cc.config.json",
+            "md5": "872C5144BB55BD76B125CA30BED94532",
+            "size": 2074
+        },
+        {
+            "filename": "assets/internal/index.js",
+            "md5": "5FEEF216A4E7772D5A63228A5A2C78EF",
+            "size": 615
+        },
+        {
+            "filename": "assets/internal/import/08/0846c28f0.json",
+            "md5": "85C5FA90EA13107B4AE3B55A6B8B875A",
+            "size": 211343
+        },
+        {
+            "filename": "assets/main/cc.config.json",
+            "md5": "E87BE3E6DA1DFB648710788BDDBCD1DB",
+            "size": 880
+        },
+        {
+            "filename": "assets/main/index.js",
+            "md5": "DB7CFA967B9B8B396D4CCEC4FDA2FD00",
+            "size": 36481
+        },
+        {
+            "filename": "assets/main/import/08/08d23a286.json",
+            "md5": "416073D5B05A97C60C1FE3BBB0280CFC",
+            "size": 3517
+        },
+        {
+            "filename": "assets/main/import/09/097d8788b.json",
+            "md5": "BA0947FB4416DBF1D6F304588CFE1EF5",
+            "size": 119
+        },
+        {
+            "filename": "assets/resources/cc.config.json",
+            "md5": "7D4118476E59AC4640924D911616DC89",
+            "size": 1612
+        },
+        {
+            "filename": "assets/resources/index.js",
+            "md5": "D8CEFF7549B7088BBDFBFDACD6EC57F7",
+            "size": 618
+        },
+        {
+            "filename": "assets/resources/import/01/01ff0a4c6.json",
+            "md5": "BD80B00C949FCF7CA9C1A7D9BFCAA29A",
+            "size": 538
+        },
+        {
+            "filename": "assets/resources/import/0b/0b8e96d6e.json",
+            "md5": "84AC73319356F2A314EB641509A6188C",
+            "size": 248
+        },
+        {
+            "filename": "assets/resources/import/0d/0d68cef90.json",
+            "md5": "09579ED9E6E9C1788B68E82814C8C1A0",
+            "size": 15082
+        },
+        {
+            "filename": "assets/resources/import/9c/9c8d2741-3050-40ce-bd59-6713fe9134f7.bin",
+            "md5": "092DB6E48E9990222F5689212F185BB4",
+            "size": 204
+        },
+        {
+            "filename": "assets/resources/import/9c/9c8d2741-3050-40ce-bd59-6713fe9134f7.json",
+            "md5": "98BD833AD5D9FABB5B7B6B53CE3B91CE",
+            "size": 1375
+        },
+        {
+            "filename": "assets/resources/import/ae/ae5f199a-551c-4e93-a5a7-792f11080fea.json",
+            "md5": "4D7FC8BA2E5B13229371E5A7657369AD",
+            "size": 1926
+        },
+        {
+            "filename": "assets/resources/import/b4/b44e4ba7-03ed-4e7f-8bda-3ef83641a602.json",
+            "md5": "4D52421144033AD325B5AE2D42CAC0B3",
+            "size": 4644
+        },
+        {
+            "filename": "assets/resources/import/cd/cdfd4b1c-fad8-472d-857b-0125f77474a7.json",
+            "md5": "679CA0CD8FB1E022FDECE894FAC25A57",
+            "size": 1341
+        },
+        {
+            "filename": "assets/resources/import/ce/ce34e17c-f0b9-423b-b65c-fb05eeddbe41.bin",
+            "md5": "F6B41187AD2B537566F595815852612E",
+            "size": 204
+        },
+        {
+            "filename": "assets/resources/import/ce/ce34e17c-f0b9-423b-b65c-fb05eeddbe41.json",
+            "md5": "308ACD6221977C71A0B57895B1035C0D",
+            "size": 1388
+        },
+        {
+            "filename": "assets/resources/native/20/20835ba4-6145-4fbc-a58a-051ce700aa3e.png",
+            "md5": "90CF45D059D0408BEC327F66EAE5764C",
+            "size": 1082
+        },
+        {
+            "filename": "assets/resources/native/24/24a704da-2867-446d-8d1a-5e920c75e09d.png",
+            "md5": "A4B5953DFFEB145B4B70072D91C4052B",
+            "size": 1140
+        },
+        {
+            "filename": "assets/resources/native/32/3275b960-0923-473f-b50d-b57636bd63d8.png",
+            "md5": "F844B269C9480AB81B7964E46AFC70EB",
+            "size": 34214
+        },
+        {
+            "filename": "assets/resources/native/54/544e49d6-3f05-4fa8-9a9e-091f98fc2ce8.png",
+            "md5": "83FCC9912E01AE5411C357651FB8B1CF",
+            "size": 1114
+        },
+        {
+            "filename": "assets/resources/native/55/5558c428-a968-4dcb-94ad-b8912afb7c4d.mp3",
+            "md5": "1283DB2545DB20B2F86878B30C51A995",
+            "size": 382553
+        },
+        {
+            "filename": "assets/resources/native/7d/7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca.png",
+            "md5": "CEA68F0D7CBA38440224F6F74531E2D8",
+            "size": 82
+        },
+        {
+            "filename": "assets/resources/native/95/951249e0-9f16-456d-8b85-a6ca954da16b.png",
+            "md5": "C06A93F5F1A8A1C6EDC4FD8B52E96CBF",
+            "size": 1050
+        },
+        {
+            "filename": "assets/resources/native/9f/9fd900dd-221b-4f89-8f2c-fba34243c835.png",
+            "md5": "D1118D133683BB4227D5E60C79C846B7",
+            "size": 1177
+        },
+        {
+            "filename": "jsb-adapter/engine-adapter.js",
+            "md5": "59CC8486AE133057A9F642F8A365FAA4",
+            "size": 138050
+        },
+        {
+            "filename": "jsb-adapter/web-adapter.js",
+            "md5": "CF4A162BD7D9925A57DA50217ACEA2ED",
+            "size": 169978
+        }
+    ]
+}

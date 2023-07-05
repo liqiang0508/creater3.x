@@ -4,10 +4,11 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:09:10
- * @LastEditTime: 2022-02-10 16:52:29
+ * @LastEditTime: 2023-07-05 14:25:47
  */
 import { assetManager, director, instantiate, Label, Node, tween, Vec2, Animation, resources } from 'cc';
 import Sound from './Sound';
+import Alert from '../view/alert/Alert';
 export default {
 
     showWaitState: false,
@@ -86,16 +87,14 @@ export default {
         })
     },
     //弹框
-    showAlert: function (str: string, btninfo = [], call: Function) {
+    showAlert: function (str: string, btninfo:string[] = ["yes", "no"], call?: Function) {
         this.loadPrefabRes("prefabs/alertNode", function (node: Node) {
             if (node) {
                 director.getScene().getChildByName('Canvas').addChild(node)
-                var Alert = node.getComponent("Alert")
+                var Alert = node.getComponent("Alert") as Alert
                 if (Alert) {
                     Alert.showAlert(str, btninfo, function (index) {
-                        if (call) {
-                            call(index)
-                        }
+                        call?.(index)
                     })
                 }
             }

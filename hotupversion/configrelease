@@ -1,0 +1,28 @@
+{
+
+  "scriptVersion": 19,
+  "baseUrl": "http://192.168.0.106/hotupversion/Script_%s/",
+  "configFile": "appinfoiii.json",
+  "channels": [
+    "-----------",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "-----------"
+  ],
+  "supportBinarys": [
+    "-----------",
+    "1.0.0",
+    "1.3.0",
+    "1.4.2",
+    "-----------"
+  ],
+  "forcedBinaryVersions": [
+    "-----------",
+    "1.3.0X",
+    "-----------"
+  ]
+
+}
