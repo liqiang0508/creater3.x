@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:09:10
- * @LastEditTime: 2023-07-05 14:25:47
+ * @LastEditTime: 2023-07-05 16:13:54
  */
 import { assetManager, director, instantiate, Label, Node, tween, Vec2, Animation, resources } from 'cc';
 import Sound from './Sound';
@@ -211,7 +211,7 @@ export default {
             }, this);
         }
     },
-    addBtnClick: function (node: Node, endCall: Function, startCall: Function = null, moveCall: Function = null, soundName = "audio_ui_btn_01") {
+    addBtnClick: function (node: Node, endCall: Function, startCall: Function = null, moveCall: Function = null, soundName = "mouseclick1") {
         node.on(Node.EventType.TOUCH_START, (event) => {
             if (startCall) {
                 startCall(event)

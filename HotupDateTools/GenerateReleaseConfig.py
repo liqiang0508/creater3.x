@@ -90,7 +90,7 @@ def walk(path):
             filename = filename.replace("\\", "/")
             # print filename
             filedata = OrderedDict()
-            filedata["filename"] = filename
+            filedata["fileName"] = filename
             filedata["md5"] = getFileMd5(filename).upper()
             filedata["size"] = getFileSize(filename)
 
@@ -175,5 +175,5 @@ with open(configrelease, "w") as f:
     f.close()
 copyFile(configrelease, "hotupversion/" + configrelease)
 
-print(" End==========================")
+print(" End=========================="+str(scriptVersion))
 os.system('pause')

@@ -1,7 +1,7 @@
 {
 
-  "scriptVersion": 19,
-  "baseUrl": "http://192.168.0.106/hotupversion/Script_%s/",
+  "scriptVersion": 22,
+  "baseUrl": "http://192.168.0.158/hotupversion/Script_%s/",
   "configFile": "appinfoiii.json",
   "channels": [
     "-----------",

@@ -11,21 +11,21 @@ import { AudioClip, error, resources } from "cc";
 export default {
     effectIds: {},
     playEffect: function (effectName, loop = false, endCall: Function = null) {
-        var effectPath = "sound/" + effectName
-        resources.load(effectPath, AudioClip, function (err, audio: AudioClip) {
-            if (err) {
-                error(err);
-                return;
-            }
-            // var id = audioEngine.playEffect(audio, loop);
-            // Sound.effectIds[effectPath] = id;
-            // cc.audioEngine.setFinishCallback(id, () => {
-            //     if (endCall) {
-            //         endCall()
-            //         resources.release(effectPath);
-            //     }
-            // })
-        });
+        // var effectPath = "sound/" + effectName
+        // resources.load(effectPath, AudioClip, function (err, audio: AudioClip) {
+        //     if (err) {
+        //         error(err);
+        //         return;
+        //     }
+        //     // var id = audioEngine.playEffect(audio, loop);
+        //     // Sound.effectIds[effectPath] = id;
+        //     // cc.audioEngine.setFinishCallback(id, () => {
+        //     //     if (endCall) {
+        //     //         endCall()
+        //     //         resources.release(effectPath);
+        //     //     }
+        //     // })
+        // });
 
     },
     playMusic: function (musicName, loop = true) {

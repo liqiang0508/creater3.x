@@ -16,11 +16,11 @@ export class Launch extends BaseComponent {
 
         if(NATIVE)
         {
-
+            this.checkUpdate()  
         }
         else
         {
-          this.checkUpdate()  
+            director.loadScene("main")
         }
         
     }
@@ -30,8 +30,10 @@ export class Launch extends BaseComponent {
      */
     protected checkUpdate()
     {
-        var url = "http://192.168.0.158/hotversion/configdebug"
+        
+        var url = "http://192.168.0.158/hotupversion/configrelease"
         VersionManager.Instance.checkUpdate(url,(code:StateCode)=>{
+            console.log("code",code)
             if(code==StateCode.UPDATE_SUCCESS) //更新成功
             {
                 game.restart()

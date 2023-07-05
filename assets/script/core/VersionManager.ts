@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-07-04 13:46:31
  * @LastEditors: Lee 497232807@qq.com
- * @LastEditTime: 2023-07-05 13:43:48
+ * @LastEditTime: 2023-07-05 16:39:02
  * @FilePath: \cocos_framework_base\assets\webGame\Common\VersionManager.ts
  */
 // 更新状态码
@@ -72,10 +72,12 @@ const fileName = "appinfoiii"
  * 包内配置路径    resources目录下面的路径
  */
 const LocalConfigPath: string = fileName
+
+const ConfigDir: string = NATIVE ? native.fileUtils.getWritablePath() + `config` : ""
 /**
  * 包外配置路径
  */
-const PackageOutPath: string = NATIVE ? native.fileUtils.getWritablePath() + `config/${fileName}.json` : ""
+const PackageOutPath: string = NATIVE ? ConfigDir+ `/${fileName}.json` : ""
 /**
  * 下载临时目录
  */
@@ -84,6 +86,7 @@ const DownTempDir: string = NATIVE ? native.fileUtils.getWritablePath() + "packa
  * 下载完移动到热更新目录
  */
 const WriteableDIr: string = NATIVE ? native.fileUtils.getWritablePath() + "package" : "package"
+console.log("WriteableDIr",WriteableDIr)
 /**
  * 主包热更新管理类
  */
@@ -175,7 +178,7 @@ export class VersionManager {
      * 解析远程配置
      */
     protected parseRemoteConfig(onFinish: Function) {
-        console.log("parseRemoteConfig",WriteableDIr)
+        console.log("parseRemoteConfig",this.hotUrl)
         this.sendHttpRequest(this.hotUrl, (response: string) => {
             this.remoteConfig = JSON.parse(response) as remoteConfig
             onFinish(1)
@@ -285,18 +288,18 @@ export class VersionManager {
      * @param changeList 
      */
     protected downChangeFiles(changeList: fileInfo[]) {
-        console.log("downChangeFiles")
+        console.log("downChangeFiles",changeList.length)
         let moveList: fileInfo[] = [] //需要移动的文件列表
         let downChangeFiles = () => {
             var file: fileInfo = changeList.pop()
             if (file) {
                 moveList.push(file)
-                console.log("file",file)
+                console.log(file)
                 var baseUrl = js.formatStr(this.remoteConfig.baseUrl, this.remoteConfig.scriptVersion)
                 var downFileUrl = baseUrl + file.fileName
-               
+                console.log("down",downFileUrl)
                 this.sendHttpRequest(downFileUrl, (response:ArrayBuffer) => {
-                    console.log("downFileUrl",downFileUrl, response)
+                    console.log("downFileUrl success",downFileUrl, response)
                     var path = DownTempDir + "/" + file.fileName //临时目录
                     var pathDir = this.getDirByUrl(path)
                     if (!native.fileUtils.isDirectoryExist(pathDir))//临时目录不存在
@@ -308,6 +311,7 @@ export class VersionManager {
                     this.progressCall(this.curDownSize, this.totalDownSize)
                     downChangeFiles()
                 }, () => {
+                    console.log("downFileUrl eror",downFileUrl)
                     this.finishCall(StateCode.DOWNLOAD_FILE_FAIL, file.fileName) //下载单个文件失败
                 }, "arraybuffer")
             }
@@ -362,9 +366,10 @@ export class VersionManager {
      * 获取远程md5配置
      */
     protected getRemoteMD5Config(onFinish: Function) {
-        console.log("getRemoteMD5Config")
         var baseUrl = js.formatStr(this.remoteConfig.baseUrl, this.remoteConfig.scriptVersion)
+        
         var url = baseUrl + this.remoteConfig.configFile
+        console.log("getRemoteMD5Config",url)
         this.sendHttpRequest(url, (response: string) => {
             this.remoteMD5Config = JSON.parse(response)
             onFinish(1)
@@ -446,6 +451,9 @@ export class VersionManager {
                 }
                 if (!native.fileUtils.isDirectoryExist(WriteableDIr)) {
                     native.fileUtils.createDirectory(WriteableDIr)
+                }
+                if (!native.fileUtils.isDirectoryExist(ConfigDir)) {
+                    native.fileUtils.createDirectory(ConfigDir)
                 }
    
             }

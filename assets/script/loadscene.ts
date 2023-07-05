@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2022-02-10 12:08:09
- * @LastEditTime: 2023-03-17 13:26:25
+ * @LastEditTime: 2023-07-05 16:46:37
  */
 
 import { _decorator, Component, Label, CCInteger, Node, UITransform } from 'cc';
@@ -22,27 +22,20 @@ import {ProtoTool} from './pb/protoTool';
 export class loadscene extends Component {
     mChild: any = {};
 
-    // @property({
-    //     type: Node,
-    //     visible: true,
-    // })
-    // targetNode: Node | null = null;
-    @property(Node)
-    mask = null;
 
     onLoad() {
         this.mChild = {}
         UITool.getChildNode(this.mChild, this.node)
-        this.showGuide(this.mChild.alert)
+        // this.showGuide(this.mChild.alert)
     }
     showGuide(target: Node) {
-        var lcoal_pos = convert2NodePos(this.mask, this.mChild.alert)
-        this.mask.position = lcoal_pos
-        this.mask.getComponent(UITransform).contentSize = target.getComponent(UITransform).contentSize
+        // var lcoal_pos = convert2NodePos(this.mask, this.mChild.alert)
+        // this.mask.position = lcoal_pos
+        // this.mask.getComponent(UITransform).contentSize = target.getComponent(UITransform).contentSize
     }
     start() {
 
-        console.log(this.mChild.Button)
+        // console.log(this.mChild.Button)
         UITool.addBtnClick(this.mChild.Button, () => {
             console.log('click')
             UITool.showWaitNetWork()
@@ -62,8 +55,6 @@ export class loadscene extends Component {
         })
 
         EventManager.on(ConstEventDefine.TEST, this.eventTest, this)
-
-        this.mChild.Label.getComponent(Label).string = "23"
 
         //pb Test
         var peron2 = tutorial.Person.create()
